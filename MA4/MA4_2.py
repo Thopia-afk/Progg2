@@ -3,13 +3,20 @@
 from person import Person
 
 def main():
-	f = Person(50)
-	print(f.getAge())
-	print(f.getDecades())
+	f = Person(5)
+	print(f.get())
+	f.set(8)
+	print(f.get())
 
-	f.setAge(51)
-	print(f.getAge())
-	print(f.getDecades())
+# def main():
+# 	f = Person(50)
+# 	print(f.getAge())
+# 	print(f.getDecades())
+
+# 	f.setAge(51)
+# 	print(f.getAge())
+# 	print(f.getDecades())
+
 
 if __name__ == '__main__':
 	main()
