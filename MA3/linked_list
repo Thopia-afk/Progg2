@@ -1,0 +1,247 @@
+""" linked_list.py
+
+Student: Karl Johansson
+Mail: achates02@hotmail.com
+Reviewed by: Elvira Zetterberg
+Date reviewed: 2023-05-03
+"""
+
+
+
+
+from re import X
+
+
+class LinkedList:
+
+    class Node:
+        def __init__(self, data, succ):
+            self.data = data
+            self.succ = succ
+
+    def __init__(self):
+        self.first = None
+    
+    def __iter__(self):       # Discussed in the section on iterators and generators
+        current = self.first
+        while current:
+            yield current.data
+            current = current.succ
+
+    def __in__(self, x):      # Discussed in the section on operator overloading
+        for d in self:
+            if d == x:
+                return True
+            elif x < d:
+                return False
+        return False
+
+    def insert(self, x):
+        if self.first is None or x <= self.first.data:
+            self.first = self.Node(x, self.first)
+        else:
+            f = self.first
+            while f.succ and x > f.succ.data:
+                f = f.succ
+            f.succ = self.Node(x, f.succ)
+
+    def print(self):
+        print('(', end='')
+        f = self.first
+        while f:
+            print(f.data, end='')
+            f = f.succ
+            if f:
+                print(', ', end='')
+        print(')')
+
+    # To be implemented
+
+    def length(self):             # Optional
+        len = 0
+        f = self.first
+        while f:
+            len +=1
+            f = f.succ
+        return len
+
+    def mean(self):               # Optional
+        sum = 0
+        f = self.first
+        while f:
+            sum += f.data
+            f = f.succ
+        return sum / self.length()
+    
+    def remove_last(self):        # Optional
+        f = self.first 
+        if not f:
+            raise ValueError 
+        while f.succ:
+            fp = f
+            f = f.succ
+            if not f.succ:
+                last = f.data 
+                fp.succ = None             
+        return last 
+
+    def remove(self, x):          # Compulsory
+        f = self.first  
+        
+        if f == None:
+            return False
+        f2 = f.succ  
+
+        if f2 == None: 
+            if f.data == x:
+                self.first = None
+                return True
+            else:
+                return False
+
+        if f.data == x:
+            self.first = f2
+            return True
+
+        while f.succ != None:
+            if f2.data == x:
+                f.succ = f2.succ
+                return True
+            elif f2.data !=x:
+                f = f.succ ; f2 = f.succ         
+        return False
+
+    def count(self, x):           # Optional
+        def _count(x, f):
+                if f == None:
+                    return 0
+                elif f.data == x:
+                    return 1 + _count(x, f.succ) 
+                else:
+                    return _count(x, f.succ)        
+        return _count(x, self.first)  
+
+    def to_list(self):            # Compulsory
+        
+        def _to_list(f):
+            if f == None:
+                return []
+            else:
+                return [f.data] + _to_list(f.succ)
+            
+        return _to_list(self.first)
+    
+    def remove_all(self, x):      # Compulsory
+        
+        def _remove_all(x, f): 
+            if f == None:
+                return 0
+            elif f.succ == None: #one node
+                if f.data == x:
+                    self.first = None
+                    f = None
+                    return 1
+                else:
+                    return 0
+            elif f.data == x:
+                self.first = f.succ
+                return 1 + _remove_all(x, f.succ)
+            elif f.succ.data == x:
+                f.succ = f.succ.succ
+                return 1 + _remove_all(x, f)  
+            else:
+                return _remove_all(x, f.succ)
+            
+        return _remove_all(x, self.first)     
+    
+    def __str__(self):            # Compulsary
+        str = '('
+        if self.first == None:
+            return '()'
+        for i in self:
+            str += f'{i}, '
+        return str[:-2] + ')'
+            
+    def copy_original(self):               # Compulsary
+        result = LinkedList()
+        for x in self:
+            result.insert(x)
+        return result
+    
+    ''' 
+        går igenom varje värde till platsen det ska till, Komplexitet: O(n^2)
+    '''
+
+    def copy(self):               # Compulsary  # Should be more efficient
+        result = LinkedList()
+
+        if self.first == None:
+                return result
+
+        def _copy(f):
+            if f.succ == None:
+                return result.Node(f.data, None)
+            else:
+                return result.Node(f.data, _copy(f.succ)) 
+
+        result.first = _copy(self.first)
+
+        return result                    
+    ''' 
+    rullar ut värdena utan att gå igenom varje värde per värde. Komplexitet: O(n)
+    '''
+
+    def __getitem__(self, ind):   # Optional
+        count = 0
+        for x in self:
+            if count == ind:
+                return x
+            count += 1
+        else:
+            raise IndexError("index out of range")
+
+
+
+class Person:                     # Compulsory
+    def __init__(self, name, pnr):
+        self.name = name
+        self.pnr = pnr
+
+    def __str__(self):
+        return f"{self.name}:{self.pnr}"
+    
+    def __It__(self, other): # < , >
+        return self.name < other.name 
+
+    def __le__(self, other): # <= , >=
+        return self.name <= other.name
+
+    def __eq__(self, other): # =
+        return self.name == other.name
+
+
+
+def main():   
+    lst = LinkedList()
+    for x in [1, 1, 1, 2, 3, 3, 2, 1, 9, 7]:
+        lst.insert(x)
+    lst.print()
+
+    lst2 = [1, 1, 2, 6, 6, 8, 9, 9]
+    for i in lst2:
+        lst.insert(i)
+        
+    
+    # Test code:
+
+    plist = LinkedList()
+    p = Person("Gud", '020214')
+    q = Person("Inte_lika_gud", '666666')
+
+    plist.insert(p)
+    plist.insert(q)
+
+    plist.print()
+
+if __name__ == '__main__':
+    main()
