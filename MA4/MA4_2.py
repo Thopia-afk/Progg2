@@ -54,11 +54,11 @@ def fib_test():
 	n = [i for i in range(30, 45, 1)]
 	result_time_py = [] ; result_time_numba = [] ; result_time_cpp = []
 	for i in n:
-
-		start = pc()
-		fib(i)
-		end = pc()
-		result_time_py.append(end - start)
+		if i < 40:
+			start = pc()
+			fib(i)
+			end = pc()
+			result_time_py.append(end - start)
    
 		start = pc()
 		fib_numba(i)
@@ -71,7 +71,7 @@ def fib_test():
 		end = pc()
 		result_time_cpp.append(end-start)
 
-	plt.plot(n, result_time_py, label='python')
+	plt.plot([i for i in n if i<40], result_time_py, label='python')
 	plt.plot(n, result_time_numba, label='numba')
 	plt.plot(n, result_time_cpp, label='c++')
 	
