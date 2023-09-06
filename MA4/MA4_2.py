@@ -14,9 +14,6 @@ def main():
 	print(f.getAge())
 	print(f.getDecades())
 
-if __name__ == '__main__':
-	main()
-
 @njit
 def fib_numba(n):
 	if n <= 1:
@@ -93,3 +90,4 @@ if __name__ == '__main__':
 	f = Person(47)	
 	print('Fib 47 c++', f.fib())
 	print('Fib 47 numba', fib_numba(47))
+ 
