@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 from person import Person
 from numba import njit
 import matplotlib.pyplot as plt
@@ -81,13 +80,14 @@ def fib_test():
 	plt.xlabel('n')
 	plt.ylabel('time')
 	plt.savefig('prog2_MA4_plot2.png')
+	plt.show()
 
 	
 
 if __name__ == '__main__':
 	main()
 	fib_test()
-	f = Person(47)	
-	print('Fib 47 c++', f.fib())
-	print('Fib 47 numba', fib_numba(47))
+	f = Person(46)	
+	print('Fib 46 c++', f.fib())
+	print('Fib 46 numba', fib_numba(46))
  
