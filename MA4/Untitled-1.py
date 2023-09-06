@@ -27,3 +27,5 @@
 # plt.savefig("output-2", facecolor='g', bbox_inches="tight",
 #             pad_inches=0.3, transparent=True)
 # plt.show()
+x = 1 + 1
+print('1 + 1 is equal to ', x)
