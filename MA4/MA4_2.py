@@ -28,22 +28,20 @@ def fib(n):
 
 def fib_test():
 	#Testing fib_py and fib_numba for n [20,30]
-	result_time_py = [] ; result_fib_py = []
-	result_time_numba = [] ; result_fib_numba = []
-	n = [i for i in range(20, 30, 1)]
+	result_time_py = []
+	result_time_numba = []
+	n = [i for i in range(1, 20, 30)]
 	for i in n:
 		start = pc()
-		result_fib = fib(i)
+		fib(i)
 		end = pc()
 		result_time_py.append(end - start)
+  
 		start = pc()  
-		result_numba = fib_numba(i) 
+		fib_numba(i) 
 		end = pc()
 		result_time_numba.append(end - start)
         
-		result_fib_py.append(result_fib)
-		result_fib_numba.append(result_numba)
-
 
 	plt.plot(n, result_time_py,label='python')
 	plt.plot(n, result_time_numba,label='numba')
@@ -54,40 +52,40 @@ def fib_test():
 	plt.savefig('prog2_MA4_plot1.png')	
 
 
-	n = [i for i in range(30, 45, 1)]
+	n = [i for i in range(1, 30, 45)]
 	result_time_py = [] ; result_time_numba = [] ; result_time_cpp = []
 	for i in n:
-		if i % 3 == 0:
-			start = pc()
-			result_py = fib(i)
-			end = pc()
-			result_time_py.append(end - start)
+
 		start = pc()
-		result_numba = fib_numba(i)
+		fib(i)
+		end = pc()
+		result_time_py.append(end - start)
+   
+		start = pc()
+		fib_numba(i)
 		end = pc()
 		result_time_numba.append(end-start)
+  
 		f = Person(i)
 		start = pc()
-		result_cpp = f.fib()
+		f.fib()
 		end = pc()
 		result_time_cpp.append(end-start)
 
-	plt.plot([i for i in n if i%3==0], result_time_py, label='python')
+	plt.plot(n, result_time_py, label='python')
 	plt.plot(n, result_time_numba, label='numba')
 	plt.plot(n, result_time_cpp, label='c++')
 	
 	plt.legend()
 	plt.xlabel('n')
 	plt.ylabel('time')
-	plt.savefig('prog2_MA4_plot2.png')
 	plt.show()
-
-	
+	plt.savefig('prog2_MA4_plot2.png')
 
 if __name__ == '__main__':
 	main()
 	fib_test()
-	f = Person(46)	
-	print('Fib 46 c++', f.fib())
-	print('Fib 46 numba', fib_numba(46))
+	f = Person(47)	
+	print('Fib 47 c++', f.fib())
+	print('Fib 47 numba', fib_numba(47))
  
