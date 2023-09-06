@@ -84,6 +84,7 @@ def fib_test():
 if __name__ == '__main__':
 	main()
 	fib_test()
+	plt.show()
 	f = Person(45)	
 	print('Fib 47 c++', f.fib())
 	print('Fib 47 numba', fib_numba(45))
