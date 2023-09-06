@@ -6,7 +6,7 @@ class Person{
 		Person(int);
 		int getAge();
 		void setAge(int);
-		double getDecades();
+		int getDecades();
 	private:
 		int age;
 	};
@@ -23,7 +23,7 @@ void Person::setAge(int a){
 	age = a;
 	}
 
-double Person::getDecades(){
+int Person::getDecades(){
 	return age/10.0;
 	}
 
