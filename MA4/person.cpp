@@ -6,7 +6,7 @@ class Person{
 		Person(int);
 		int getAge();
 		void setAge(int);
-		int getDecades();
+		double getDecades();
 	private:
 		int age;
 	};
