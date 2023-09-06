@@ -10,6 +10,7 @@ class Person{
 		int fib();
 	private:
 		int age;
+		int _fib(int);
 	};
  
 Person::Person(int a){
