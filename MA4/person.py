@@ -1,9 +1,9 @@
 """ Python interface to the C++ Person class """
 """
-Student: Oliver Näslund
-Mail: oliver.naslund@gmail.com
-Reviewed by: Hannah M
-Date reviewed: 16 Maj 2023
+Student: 
+Mail: 
+Reviewed by: 
+Date reviewed: 
 """
 
 import ctypes
