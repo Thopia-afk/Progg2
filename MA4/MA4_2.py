@@ -29,7 +29,7 @@ def fib(n):
 def fib_test():
 	result_time_py = []
 	result_time_numba = []
-	n = [i for i in range(1, 20, 25, 30)]
+	n = [i for i in range(20, 30, 1)]
 	for i in n:
 		start = pc()
 		fib(i)
@@ -51,7 +51,7 @@ def fib_test():
 	plt.savefig('prog2_MA4_plot1.png')	
 
 
-	n = [i for i in range(1, 30, 35, 40, 45)]
+	n = [i for i in range(30, 45, 1)]
 	result_time_py = [] ; result_time_numba = [] ; result_time_cpp = []
 	for i in n:
 
