@@ -27,7 +27,6 @@ def fib(n):
 		return(fib(n-1) + fib(n-2))
 
 def fib_test():
-	#Testing fib_py and fib_numba for n [20,30]
 	result_time_py = []
 	result_time_numba = []
 	n = [i for i in range(1, 20, 25, 30)]
