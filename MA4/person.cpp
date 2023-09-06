@@ -31,14 +31,17 @@ double Person::getDecades(){
 int Person::fib(){
 	return _fib(Person::getAge());
 
+}
+
 int Person::_fib(int n){ 
 	if (n<=1){
 		return n;
 	}
+
 	else {
 		return (_fib(n-1) + _fib(n-2));
-		}
 	}
+}
 
 extern "C"{
 	Person* Person_new(int a) {return new Person(a);}
