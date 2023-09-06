@@ -26,64 +26,7 @@ def fib(n):
 	else:
 		return(fib(n-1) + fib(n-2))
 
-# def fib_test():
-# 	result_time_py = []
-# 	result_time_numba = []
-# 	n = [i for i in range(20, 30, 1)]
-# 	for i in n:
-# 		start = pc()
-# 		fib(i)
-# 		end = pc()
-# 		result_time_py.append(end - start)
-  
-# 		start = pc()  
-# 		fib_numba(i) 
-# 		end = pc()
-# 		result_time_numba.append(end - start)
-        
-
-# 	plt.plot(n, result_time_py,label='python')
-# 	plt.plot(n, result_time_numba,label='numba')
-# 	plt.xlabel('n')
-# 	plt.ylabel('time')
-# 	plt.legend()
-# 	plt.show()
-# 	plt.savefig('prog2_MA4_plot1.png')	
-
-
-# 	n = [i for i in range(30, 45, 1)]
-# 	result_time_py = [] ; result_time_numba = [] ; result_time_cpp = []
-# 	for i in n:
-# 		if i < 40:
-# 			start = pc()
-# 			fib(i)
-# 			end = pc()
-# 			result_time_py.append(end - start)
-   
-# 		start = pc()
-# 		fib_numba(i)
-# 		end = pc()
-# 		result_time_numba.append(end-start)
-  
-# 		f = Person(i)
-# 		start = pc()
-# 		f.fib()
-# 		end = pc()
-# 		result_time_cpp.append(end-start)
-
-# 	plt.plot([i for i in n if i<40], result_time_py, label='python')
-# 	plt.plot(n, result_time_numba, label='numba')
-# 	plt.plot(n, result_time_cpp, label='c++')
-	
-# 	plt.legend()
-# 	plt.xlabel('n')
-# 	plt.ylabel('time')
-# 	plt.show()
-# 	plt.savefig('prog2_MA4_plot2.png')
-
-if __name__ == '__main__':
-	main()
-
+def fib_test():
 	result_time_py = []
 	result_time_numba = []
 	n = [i for i in range(20, 30, 1)]
@@ -138,6 +81,9 @@ if __name__ == '__main__':
 	plt.show()
 	plt.savefig('prog2_MA4_plot2.png')
 
+if __name__ == '__main__':
+	main()
+	fib_test()
 	f = Person(45)	
 	print('Fib 47 c++', f.fib())
 	print('Fib 47 numba', fib_numba(45))
